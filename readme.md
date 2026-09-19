@@ -568,6 +568,10 @@ Remember
 - A constructor runs automatically when an object is created and commonly initializes properties.
 - Constructor ka purpose hota hai object create hote waqt initial data set karna.
 
+Example:
+
+**JavaScript:**
+
 Without constructor:
 
 ```javascript
@@ -605,7 +609,7 @@ new User("John", 25);
 
 constructor automatically call hota hai.
 
-Java:
+**Java:**
 
 ```java
 class User {
@@ -627,7 +631,7 @@ user.greet();
 
 Java me constructor ka name `class` ke name par hota h
 
-PHP:
+**PHP:**
 
 ```php
 class User{
@@ -668,7 +672,7 @@ PHP constructor:
 
     __construct()
 
-Python:
+**Python:**
 
 ```python
 class User:
@@ -697,5 +701,85 @@ initialization ke liye use hota hai
 **Question:** What is a constructor used?<br>
 **Answer 1:** To initialize a newly created object state.
 **Answer 2:** To initialize a value of newly created object.
+
+---
+
+### 9. Destructor / finalization concepts
+
+Yahan language mein bahut important difference hai
+
+JavaScript:
+
+JavaScript mein traditional destructor nahi hota.
+
+```javascript
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+```
+
+Object eventually `garbage collector` ke through clean up ho sakta hai.
+
+JavaScript mein normal OOP code ke liye;
+
+    constructor -> Yes
+    destructor  -> No traditional destructor
+
+Java:
+Java mein traditional destructor nahi hai.
+
+Old Java code mein `finalize()` hota tha, lekin modern Java mein `finalize()` deprecated/obsolete hai and should not be used for resource cleanup.
+
+Resource ke liye generally:
+
+    try(SomeResource resource = ...){
+        //  use resource
+    }
+
+aur `AutoCloseable / Closeable` use kiya jata hai.
+
+so:
+
+    Java
+    constrcutor -> Yes
+    destructor  -> No
+    finalize()  -> Don`t use for modern code
+
+PHP:
+PHP mein `__destruct()` hota hai.
+
+```php
+class User {
+    public function __construct(){
+        echo "Construct called";
+    }
+
+    public function __destruct(){
+        echo "Destructor called\n";
+    }
+}
+
+$user = new User();
+```
+
+`__destruct()` object destruction ke time invoke ho sakta hai.
+
+Python:
+Python mein `__del__() ` method exist karta hai.
+
+```python
+class User:
+    def __init__(self):
+        print("constructor")
+
+    def __del__(self):
+        print("Destructor")
+```
+
+But `__del__()` ko reliable resource cleanup mechanism nahi samajhna chahiye. Python garbage collection/reference-counting behavior aur interpreter shutdown ke situations ki wajah se timing guaranteed nahi hoti
+
+Resources ke liye context managers use karna better hai.
 
 ---
