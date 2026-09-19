@@ -969,3 +969,319 @@ Also, `call()`, `apply()`, and `bind()` can control `this` for regular functions
 **Answer:** JavaScript `this` is primarily determined by the call-site/context, while Java `this` refers to the `current instance` and Python explicitly uses `self` as the `instance parameter`.<br>
 
 ---
+
+### 11. Call(), Apply(), and Bind()
+
+Exactly. this is one of the most important parts of JavaScript `this`. Let understand `call()`, `apply()` and `bind()` step by step.
+
+**1. The Problem: What is `this`?:**
+
+Consider:
+
+```javascript
+const user = {
+  name: "John",
+  greet() {
+    console.log(this.name);
+  },
+};
+
+user.greet();
+```
+
+Output:
+
+    John
+
+Here:
+
+```javascript
+user.greet();
+```
+
+means `greet()` is called through `user`, so:
+
+```javascript
+this === user;
+```
+
+Therefore:
+
+```javascript
+this.name;
+```
+
+is:
+
+```javascript
+user.name;
+```
+
+**2. `call()`**
+`call()` lets you immediately call a function while explicitly choosing what `this` should be.
+
+Example:
+
+```javascript
+const user1 = {
+  name: "John",
+};
+const user2 = {
+  name: "Alice",
+};
+
+function greet() {
+  console.log("Hello " + this.name);
+}
+
+greet.call(user1);
+greet.call(user2);
+```
+
+Output:
+
+    Hello John
+    Hello Alice
+
+Normally, `greet()` does not have an object before it.<br>
+But:
+
+> "Execute `greet`, and make `this` refer to `user1`"
+
+So:
+
+```javascript
+this === user1;
+```
+
+And:
+
+```javascript
+greet.call(user2);
+```
+
+means:
+
+```javascript
+this === user2;
+```
+
+**`call()` with arguments**
+You can also pass argument individually:
+
+```javascript
+function introduce(age, city) {
+  console.log(this.name, age, city);
+}
+
+const user = {
+  name: "John",
+};
+
+introduce.call(user, 25, "Raipur");
+```
+
+Output:
+
+    John 25 Raipur
+
+The syntax is:
+
+```javascript
+function.call(thisValue, arg1, arg2, arg3);
+```
+
+**3. `apply()`**
+`apply()` is almost the same as `call()`.
+The main difference is how arguments are passed.
+
+`Call()`
+Arguments are passed individually:
+
+```javascript
+introduce.call(user, 25, "Raipur");
+```
+
+`Apply()`
+Arguments are passed as an array:
+
+```javascript
+introduce.apply(user, [25, "Raipur"]);
+```
+
+Complete example:
+
+```javascript
+const user = {
+  name: "John",
+};
+function introduce(age, city) {
+  console.log(this.name, age, city);
+}
+
+introduce.call(user, 25, "Raipur"); // call pass argument individual
+introduce.apply(user, [25, "Raipur"]); // apply pass argument as an array
+```
+
+Both produce:
+
+    John 25 Raipur
+
+Easy way to remember
+
+    call -> arguments separately pass
+    apply -> arguments pass as array
+
+**4. `bind()`**
+
+- `bind()` is different.
+- `call()` and `apply()` execute the function immediately.
+- `bind()` does not execute it immediately.
+
+Instead, it creates a new function with `this` permanently associated with the soecified object.
+
+Example:
+
+```javascript
+const user = {
+  name: "John",
+};
+function greet() {
+  console.log("Hello " + this.name);
+}
+const greetUser = greet.bind(user);
+greetUser();
+```
+
+Output:
+
+    Hello John
+
+Notice this:
+
+```javascript
+const greetUser = greet.bind(user);
+```
+
+- does not execute `greet`
+- It create a new function.
+
+- Then: `greetUser()` execute it
+
+**5. `bind()` With arguments**
+`bind()` can also pre-fill arguments
+
+```javascript
+function introduce(age, city) {
+  console.log(this.name, age, city);
+}
+const user = {
+  name: "John",
+};
+const introduceJohn = introduce.bind(user, 25, "Raipur");
+introduceJohn();
+```
+
+Ouput:
+
+    John 25 Raipur
+
+This is called partial application / arument binding
+
+**6. `All three together**
+Here is the easiest comparison:
+
+```javascript
+const user = {
+  name: "John",
+};
+function greet(message) {
+  console.log(message + ", " + this.name);
+}
+
+// call
+greet.call(user, "Hello"); // Execute now
+
+// apply
+greet.apply(user, ["Hello"]); // Execute now, arguments in an array
+
+// bind
+const newGreet = greet.bind(user, "Hello"); // Creates a new function, which executes later.
+newGreet();
+```
+
+**7. Very important interview question**
+**Question:** what is the difference between call(), apply(), and bind()?
+**Answer:** All three can explicitly set this for a regular JavaScript function.
+
+- `call()` invokes the function imediately with arguments paased individually.
+- `apply()` also invokes it immediately but takes arguments as an array-like value.
+- `bind()` does not invoke the function immediately; it returns a new function with `this` and optionally some arguments bound.
+
+**Interview Table:**
+| Method | Executes immediately? | Arguments |
+| ------ | --------------------- | --------- |
+|`call()`|Yes |Individual|
+|`apply()`|Yes |Array/array-like|
+|`bind()`|No |Individual, pre-bound|
+
+**8. A very common real-world example**
+Suppose you have one function that should work with multiple objects:
+
+```javascript
+const person1 = {
+  name: "John",
+};
+const person2 = {
+  name: "Alice",
+};
+
+function sayHello() {
+  console.log(`Hello, I am ${this.name}`);
+}
+
+// We can reuse the same function:
+
+sayHello.call(person1);
+sayHello.call(person1);
+
+// Output
+// Hello, I am John
+// Hello, I am Alice
+
+// Instead of creating two seprate functions.
+```
+
+**9. Important: Arrow function**
+This is where many JavaScript interview become tricky.
+`call()`, `apply()`, and `bind()` cannot change the `this` of an arrow function.
+
+Example:
+
+```javascript
+const greet = () => {
+  console.log(this);
+};
+greet.call({ name: "John" });
+```
+
+- `call()` does not make `this` become {name:"John"}.
+- Why?
+- Because arrow function do not have their own `this`
+- They inherit `this` from their surrounding lexical scope.
+
+So rememeber:
+
+    Regualr function -> call/apply/bind can control this
+    Arrow function -> call/apply bind cannot change this
+
+> This distinction is very important for JavaScript OOP and Interviews.
+
+One-line memory trick:
+
+> call = call now, apply = call now with array, bind = create funnction for later
+
+**10. A very common real-world example**
+**11. A very common real-world example**
+
+---
