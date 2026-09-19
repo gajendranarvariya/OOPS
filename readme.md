@@ -884,8 +884,8 @@ class User:
   def greet(self):
     print(self.name)
 
-user = User("John");
-user.greet();
+user = User("John")
+user.greet()
 
 ```
 
