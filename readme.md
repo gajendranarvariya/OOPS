@@ -610,8 +610,8 @@ Java:
 ```java
 class User {
     String name;
-    int age;
-    User(String name, int age){
+    Int age;
+    User(String name, Int age){
         this.name = name;
         this.age = age;
     }
@@ -655,7 +655,7 @@ class User{
         $this->age = age;
     }
     public function greet():void{
-        echo "Hello ". $this->name
+        echo "Hello ". $this->name;
     }
 }
 
@@ -673,13 +673,13 @@ Python:
 ```python
 class User:
     def __init__(self,name,age):
-        self.name = name;
-        self.age = age;
+        self.name = name
+        self.age = age
 
     def greet(self):
-        print("Hello "+self.name);
+        print("Hello "+self.name)
 
-user = User("John", 25);
+user = User("John", 25)
 user.greet()
 ```
 
