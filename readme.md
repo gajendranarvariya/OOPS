@@ -1285,3 +1285,161 @@ One-line memory trick:
 **11. A very common real-world example**
 
 ---
+
+### 12. Complete Example - All concept together
+
+Ab ek hi `User` example main sab kuch combine karte hain.
+
+JavaScript:
+
+```javascript
+class User {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    console.log("Hello, I am " + this.name);
+  }
+  showAge() {
+    console.log("My age is " + this.age);
+  }
+}
+
+const user = new User("John", 25);
+user.greet();
+user.showAge();
+```
+
+Yahan:
+
+    User                -> Class
+    user                -> Object
+    name, age           -> Properties/Attributes
+    greet(), showAge()  -> Methods
+    constructor()       -> Constructor
+    this                -> Current Object
+
+Java
+
+```java
+class User {
+    String name;
+    int age;
+
+    User(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+    void greet(){
+        System.out.println("Hello, I am "+this.name)
+    }
+    void showAge(){
+        System.out.println("My age is "+this.age)
+    }
+}
+
+User user = new User("John", 25);
+user.greet()
+user.showAge()
+
+// ya -> main class ka use karke ise call kar sakte h
+
+/* public class Main {
+    public static void main(String[] args){
+        User user = new User("John", 25);
+
+        user.greet();
+        user.showAge();
+    }
+} */
+```
+
+PHP:
+
+```php
+class User {
+    public string $name;
+    public int $age;
+
+    public function __construct(string $name, int $age){
+        $this->name = $name;
+        $this->age = $age;
+    }
+
+    public function greet():void{
+        echo "Hello, I am ". $this->name. PHP_EOL;
+    }
+    public function showAge():void{
+        echo "My age is ". $this->age. PHP_EOL;
+    }
+}
+
+$user = new User("John", 25);
+$user->greet();
+$user->showAge();
+
+
+```
+
+Python:
+
+```python
+class User:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+
+    def greet(self):
+        print("Hello, I am " + self.name)
+
+    def show_age(self):
+        print("My age is " + self.age)
+
+user = User("John", 25)
+user.greet();
+user.show_age()
+```
+
+---
+
+### 12. Ekdum simple mental model
+
+OOP ko initially is trah yaad rakho.
+
+    CLASS                      -> Blueprint/Template
+    OBJECT                     -> Actual thing created from class
+    PROPERTY / ATTRIBUTE       -> Object ka data
+    METHOD                     -> Object ka Behavior/Action
+    CONSTRUCTOR                -> Object create/initialize karte waqt setup
+    DESTRUCTOR / FINALIZATION  -> Cleanup lifecycle concept -> Language ke according different
+    this / self                -> Current Object ko refer karna
+
+Aur 4 language mein:
+
+| Language ->    | JavaScript     | Java       | PHP             | Python     |
+| -------------- | -------------- | ---------- | --------------- | ---------- |
+| Class          | class          | class      | class           | class      |
+| Object         | new User()     | new User() | new User()      | User()     |
+| Property       | this.name      | this.name  | $this->name     | self.name  |
+| Method         | greet()        | greet()    | greet()         | greet()    |
+| Constructor    | constructor()  | User()     | \_\_construct() | **init**() |
+| Current Object | this           | this       | $this           | self       |
+| Destructor     | No traditional | NO         | \_\_destruct()  | **del**()  |
+
+---
+
+## 2. Access Modifiers
+
+#### 1. Public
+
+#### 2. Private
+
+#### 3. Protected
+
+> jdsfgfjfksfhghf jksdfgkjhfghf fghfkjghfhgfdhfkghdfkhgkdfhgkhdfkjghkjdffhg dfgkdfk dffbdfjgdfbdgkjdffjg ddfgkdfgf dfifgdkfjbg df gdfgdf fdfidfgjf ndf g jdfgd ddfngkjdfgdf dfdfbg
+
+#### 4. Package/default access where applicable
+
+#### 5. Getter and Setter
