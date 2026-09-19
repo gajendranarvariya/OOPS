@@ -562,3 +562,140 @@ Remember
 **Answer 2:** Methods are functions defined inside a class that describe behavior.
 
 ---
+
+### 8. Constructor
+
+- A constructor runs automatically when an object is created and commonly initializes properties.
+- Constructor ka purpose hota hai object create hote waqt initial data set karna.
+
+Without constructor:
+
+```javascript
+const user = new User();
+user.name = "John";
+user.age = 25;
+```
+
+With constructor:
+
+```javascript
+class User {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  greet() {
+    console.log(`Hello ${this.name}`);
+  }
+}
+
+const user = new User("John", 25);
+user.greet();
+```
+
+Output:
+
+    Hello John
+
+Object create hote hi:
+
+```javascript
+new User("John", 25);
+```
+
+constructor automatically call hota hai.
+
+Java:
+
+```java
+class User {
+    String name;
+    int age;
+    User(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    void greet(){
+        System.out.println("Hello " + this.name)
+    }
+}
+
+User user = new User("John", 25);
+user.greet();
+
+```
+
+Java me constructor ka name `class` ke name par hota h
+
+PHP:
+
+```php
+class User{
+    public $name;
+    public $age;
+    public function __construct($name,$age){
+        $this->name = name;
+        $this->age = age;
+    }
+    public function greet(){
+        echo "Hello ". $this->name
+    }
+}
+
+$user = new User("John",25);
+$user->greet();
+
+
+// Another way
+class User{
+    public string $name;
+    public int $age;
+    public function __construct(string $name,int $age){
+        $this->name = name;
+        $this->age = age;
+    }
+    public function greet():void{
+        echo "Hello ". $this->name
+    }
+}
+
+$user = new User("John",25);
+$user->greet();
+
+```
+
+PHP constructor:
+
+    __construct()
+
+Python:
+
+```python
+class User:
+    def __init__(self,name,age):
+        self.name = name;
+        self.age = age;
+
+    def greet(self):
+        print("Hello "+self.name);
+
+user = User("John", 25);
+user.greet()
+```
+
+Python main:
+
+    __init__()
+
+initialization ke liye use hota hai
+
+**Interview Ask:**<br>
+**Question:** What is a constructor?<br>
+**Answer 1:** A constructor runs automatically when an object is created and commonly initializes properties.<br>
+**Answer 2:** Constructor ka purpose hota hai object create hote waqt initial data set karna.<br>
+
+**Question:** What is a constructor used?<br>
+**Answer 1:** To initialize a newly created object state.
+**Answer 2:** To initialize a value of newly created object.
+
+---
