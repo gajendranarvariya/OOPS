@@ -783,3 +783,189 @@ But `__del__()` ko reliable resource cleanup mechanism nahi samajhna chahiye. Py
 Resources ke liye context managers use karna better hai.
 
 ---
+
+### 10. `this` / `self`
+
+- `this` generally refers to the current object/context, but its exact meaning differs by language.
+- In JavaScript, `this` depends heavily on `how a function is called, not simply where it was written.`
+
+Yeh bahut important hai.
+
+Suppose:
+
+    User object
+    name = John
+
+Method ke andar current object ko refer karna hai.
+
+JavaScript:
+
+```javascript
+this.name;
+```
+
+Java:
+
+```java
+this.name;
+```
+
+PHP:
+
+```php
+$this->name;
+```
+
+Python:
+
+```python
+self.name
+```
+
+Example:
+
+JavaScript:
+
+```javascript
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(this.name);
+  }
+}
+
+const user = new User("John");
+user.greet();
+```
+
+Java:
+
+```java
+class User {
+    String name;
+  User(String name) {
+    this.name = name;
+  }
+  void greet() {
+    System.out.println(this.name);
+  }
+}
+
+User user = new User("John");
+user.greet();
+```
+
+PHP:
+
+```php
+class User {
+    public $name;
+  public function __construct($name) {
+    $this->name = $name;
+  }
+  public function greet() {
+    echo $this->name;
+  }
+}
+
+$user = new User("John");
+$user->greet();
+```
+
+Python:
+
+```python
+class User:
+  def __init__(self,name):
+    self.name = name
+
+  def greet(self):
+    print(self.name)
+
+user = User("John");
+user.greet();
+
+```
+
+Main Difference
+
+|  Language  | Current Object |
+| :--------: | :------------: |
+| JavaScript |      this      |
+|    Java    |      this      |
+|    PHP     |     $this      |
+|   Python   |      self      |
+
+> Important: Python mein `self` keyword technically reserved keyword nahi hai; ye ek strong/common naming convention hai. Aap technically doosra parameter name use kar sakte ho, lekin `self` hi use karna standard hai.
+
+**this is JavaScript: Use different way**
+
+**Global Object:**
+
+```javascript
+console.log(this); // This this represent global object
+```
+
+**Class:**
+
+```javascript
+class User {
+  constructor(name) {
+    this.name = name; // Current User instance
+  }
+  greet() {
+    console.log(this.name);
+  }
+}
+```
+
+**Object:**
+
+```javascript
+const obj = {
+  name: "John",
+  greet() {
+    console.log(this.name); // obj
+  },
+};
+```
+
+**Funtion:**
+
+```javascript
+function test() {
+  console.log(this);
+}
+```
+
+With `new`, `this` becomes the newly created object:
+
+```javascript
+function User(name) {
+  this.name = name;
+}
+const user = new User("John");
+```
+
+With an `arrow function`, `this` is inherited lexically from the surrounding scope; arrow function don`t create their own `this`.
+
+```javascript
+const obj = {
+  name: "John",
+  greet: () => console.log(this.name),
+};
+```
+
+Also, `call()`, `apply()`, and `bind()` can control `this` for regular functions.
+
+**Interview Ask:**<br>
+**Question 1:** What is `this` in JavaScript?<br>
+**Answer 1:** In JavaScript, `this` refers to the current instance<br>
+**Answer 2:** `this` generally refers to the current object/context, but its exact meaning differs by language.<br>
+
+**Question 2:** How is JavaScript `this` different from Java/Python?<br>
+**Answer:** JavaScript `this` is primarily determined by the call-site/context, while Java `this` refers to the `current instance` and Python explicitly uses `self` as the `instance parameter`.<br>
+
+---
