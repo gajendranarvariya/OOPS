@@ -514,7 +514,7 @@ user.greet();
 class User {
     public $name;
     public function greet(){
-        echo "Hello" .this->name;
+        echo "Hello" .$this->name;
     }
 }
 // Object
