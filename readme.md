@@ -349,7 +349,7 @@ user2 = User()
 
 ---
 
-#### 6. Properties / Attributes
+### 6. Properties / Attributes
 
 - Properties store an object data/state.
 - Property = Object ka data/state
@@ -452,8 +452,113 @@ Easy Definition
 
 > Properties/attributes object ke andar data store karte hain.
 
-**Interview Ask:**
-**Question:** What is a property?
+**Interview Ask:**<br>
+**Question:** What is a property?<br>
 **Answer:** A property/attribute represents data or state belonging to an object.
+
+---
+
+### 7. Methods
+
+- Methods are functions defined inside a class that describe behavior.
+- Method = Object ka behavior/action
+
+User kya kar sakta hai?
+
+- greet
+- login
+- logout
+- changePassword
+
+Example:
+
+JavaScript
+
+```javascript
+class User {
+  name;
+  greet() {
+    console.log(`Hello ${this.name}`);
+  }
+}
+
+const user = new User();
+user.name = "John";
+user.greet(); // Calling a method
+```
+
+Output:
+
+    Hello John
+
+> greet() - ek method hai
+
+Java:
+
+```java
+class User {
+    String name;
+    void greet(){
+        System.out.println("Hello" + this.name);
+    }
+}
+// Object
+User user = new User();
+user.name = "John";
+user.greet();
+```
+
+**PHP:**
+
+```php
+class User {
+    public $name;
+    public function greet(){
+        echo "Hello" .this->name;
+    }
+}
+// Object
+$user = new User();
+$user->name = "John";
+$user->greet();
+```
+
+Python:
+
+```python
+class User:
+    def greet(self):
+        print("Hello "+ self.name);
+
+# Object
+user = User();
+user.name = "John"; # Assign value in properties
+user.greet(); # calling methods/function/action
+
+```
+
+Remember
+
+    Property -> Data
+    Method   -> Behavior
+
+**Example:**
+
+    User
+
+    Properties:
+        name
+        age
+        email
+
+    Methods:
+        login()
+        logout()
+        greet()
+
+**Interview Ask:**<br>
+**Question:** What is a method?<br>
+**Answer 1:** A method is an operation/behavior that an object can perform.<br>
+**Answer 2:** Methods are functions defined inside a class that describe behavior.
 
 ---
