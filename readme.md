@@ -348,3 +348,112 @@ user2 = User()
 **Answer 2:** An Object is a runtime instance containing data and behavior defined by a class.
 
 ---
+
+#### 6. Properties / Attributes
+
+- Properties store an object data/state.
+- Property = Object ka data/state
+
+Maan lo User ke pass:
+
+- name
+- age
+- email
+
+hai.
+
+Example:
+
+**JavaScript**
+
+```javascript
+// Class
+class User {
+  // property
+  name;
+  age;
+  email;
+}
+
+// Object
+const user = new User();
+
+// assign the value of property
+user.name = "John";
+user.age = 25;
+user.email = "john@example.com";
+```
+
+    name  -> Property
+    age   -> Property
+    email -> Property
+
+**Java**
+
+```java
+// Class
+class User {
+    String name;
+    Int age;
+    String email;
+}
+
+// Object
+User user = new User();
+
+// Assign the value of property
+user.name = "John";
+user.age = 25;
+user.email = "John@gmail.com";
+```
+
+**PHP**
+
+```php
+// Class
+class User {
+    public $name;
+    public $age;
+    public $email;
+
+    // ya
+    // public string $name;
+    // public int $age;
+    // public string $email;
+
+}
+
+// Object
+$user = new User();
+
+// Assign the value of property
+$user->name = "John";
+$user->age = 25;
+$user->email = "John@example.com";
+```
+
+**Python**
+
+```python
+# Class
+class User:
+    pass
+
+# Object
+user = User();
+user.name = "John";
+user.age = "John";
+user.email = "John";
+```
+
+> Note: Python mein `properties` commonly instance attributes ke form mein create ki ja sakti hain.
+
+Easy Definition
+
+> Properties/attributes object ke andar data store karte hain.
+
+**Interview Ask:**
+**Question:** What is a property?
+**Answer:** A property/attribute represents data or state belonging to an object.
+
+---
