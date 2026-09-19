@@ -2,7 +2,7 @@
 
 What will we cover this topic:
 
-## 1. OOP Fandamentals
+### 1. OOP Fandamentals
 
 - What is OOP?
 - Why OOP?
@@ -15,7 +15,7 @@ What will we cover this topic:
 - Destructor / finalization concepts
 - `this` / `self` / `this`
 
-## 2. Access Modifiers
+### 2. Access Modifiers
 
 - Public
 - Private
@@ -23,7 +23,7 @@ What will we cover this topic:
 - Package/default access where applicable
 - Getter and Setter
 
-## 3. Four Pillars of OOPS
+### 3. Four Pillars of OOPS
 
 - Encapsulation
 - Inheritance
@@ -39,7 +39,7 @@ Example:
     Vehicle System
     Food Delivery
 
-## 4. Inheritance
+### 4. Inheritance
 
 - Parent/Base class
 - Child/Derived class
@@ -53,7 +53,7 @@ Example:
 - `super`
 - `final`
 
-## 5. Polymorphism
+### 5. Polymorphism
 
 - Compile-time polymorphism
 - Runtime polymorphism
@@ -61,7 +61,7 @@ Example:
 - Duck typing in Python
 - Practical Payment example
 
-## 6. Abstraction
+### 6. Abstraction
 
 - Abstract class
 - Abstract method
@@ -69,7 +69,7 @@ Example:
 - Abstract class vs normal class
 - Abstract class vs interface
 
-## 7. Interfaces
+### 7. Interfaces
 
 Especially important for:
 
@@ -85,7 +85,7 @@ Example:
     |-------|--------|
     UPI     Card    PayPal
 
-## 8. Traits
+### 8. Traits
 
 Especially iimportant in PHP
 
@@ -106,7 +106,7 @@ Real-world example:
     Authentication
     Validation
 
-## 9. Object Relationships
+### 9. Object Relationships
 
 - Association
 - Aggregation
@@ -123,7 +123,7 @@ Example:
     Order HAS-A Customer
     Order USES-A PaymentSevice
 
-## 10. Copying Objects
+### 10. Copying Objects
 
 - Reference vs value (pass by reference and pass by value)
 - Shallow copy
@@ -136,7 +136,7 @@ Example:
 - Python copy
 - Python deepcopy
 
-## 11. More Important OOP Concepts
+### 11. More Important OOP Concepts
 
 - Static properties
 - Static methods
@@ -162,7 +162,7 @@ Example:
 - Law of Demeter
 - Design pattern
 
-## 12. SOLID Principles
+### 12. SOLID Principles
 
 Very important for moving from beginner OOP -> professional OOP.
 
@@ -172,7 +172,7 @@ Very important for moving from beginner OOP -> professional OOP.
     I -> Interface Segregation Principle
     D -> Dependency Inversion Principle
 
-## 13. Design Patterns
+### 13. Design Patterns
 
 After understanding OOPS fundamentals:
 
@@ -187,7 +187,7 @@ After understanding OOPS fundamentals:
 - Repository
 - Dependency Injection
 
-## 14. Real-World Projects
+### 14. Real-World Projects
 
 1. Banking System
 2. E-commerce System
@@ -197,7 +197,7 @@ After understanding OOPS fundamentals:
 6. Payment System
 7. Ride Booking System
 
-## 15. Recap
+### 15. Recap
 
 1. What is OOPS?
 2. Why do we use OOP?
@@ -236,3 +236,55 @@ After understanding OOPS fundamentals:
 35. Real-World Examples
 36. OOPS Interview Questions
 37. OOPS Cheat Sheet
+
+---
+
+## 1. OOP Fandamentals
+
+#### 1. What is OOPS?
+
+#### 2. Why OOPS?
+
+#### 3. Procedural vs Object-Oriented Programming
+
+---
+
+### 4. Class
+
+- A class is a blueprint/template for creating objects.
+- Class = blueprint/template
+
+Example:
+
+**JavaScript**
+
+```javascript
+class User {}
+```
+
+**Java**
+
+```java
+class User {}
+```
+
+**PHP**
+
+```php
+class User {}
+```
+
+**Python**
+
+```python
+class User:
+    pass
+```
+
+Class khud generally blueprint hai. actual data ke saath object banane par objecct create hota hai.
+
+**Interview:** What is a class?<br>
+**Answer 1:** A class defines the structure and behavior that objects created from it will have.<br>
+**Answer 2:** A class is a blueprint/template for creating objects.
+
+---
