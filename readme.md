@@ -14,6 +14,7 @@ What will we cover this topic:
 - Constructor
 - Destructor / finalization concepts
 - `this` / `self` / `this`
+- `call()` / `apply()` / `bind()`
 
 ### 2. Access Modifiers
 
@@ -286,5 +287,64 @@ Class khud generally blueprint hai. actual data ke saath object banane par objec
 **Interview:** What is a class?<br>
 **Answer 1:** A class defines the structure and behavior that objects created from it will have.<br>
 **Answer 2:** A class is a blueprint/template for creating objects.
+
+---
+
+### 5. Object
+
+- An object is an instance of a class.
+- Object = class ka actual Instance
+- Object = Instance of class
+
+Example:
+
+**JavaScript**
+
+```javascript
+// Class
+class User {}
+
+// Object
+const user1 = new User();
+const user2 = new User();
+```
+
+**Java**
+
+```java
+// Class
+class User {}
+
+// Object
+User user1 = new User();
+User user2 = new User();
+```
+
+**PHP**
+
+```php
+// Class
+class User {}
+
+// Object
+$user1 = new User();
+$user2 = new User();
+```
+
+**Python**
+
+```python
+# Class
+class User:
+    pass
+
+# Object
+user1 = User()
+user2 = User()
+```
+
+**Question:** What is an Object?<br>
+**Answer 1:** An Object is an instance of a class.<br>
+**Answer 2:** An Object is a runtime instance containing data and behavior defined by a class.
 
 ---
